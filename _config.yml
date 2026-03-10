@@ -1,0 +1,47 @@
+title: "NielsKok.Tech"
+description: "A blog about End User Computing (EUC) — Intune, Azure Virtual Desktop, Windows 11, and more."
+baseurl: "/nielskok-tech"
+url: "https://nielsopenclaw.github.io"
+author: "Niels Kok"
+email: ""
+twitter_username: ""
+github_username: nielsopenclaw
+
+theme: minima
+minima:
+  skin: auto
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+permalink: /:categories/:title/
+
+paginate: 10
+paginate_path: "/page/:num/"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+collections:
+  posts:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor

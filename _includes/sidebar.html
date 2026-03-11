@@ -1,0 +1,45 @@
+<aside class="sidebar">
+  <!-- MVP Logo -->
+  <div class="widget widget-image">
+    <img src="https://www.nielskok.tech/wp-content/uploads/2022/06/MVP_Logo_Horizontal_Secondary_Black_CMYK_300ppi-300x121.png" alt="MVP Logo" style="max-width: 100%; height: auto; margin-bottom: 20px;">
+  </div>
+
+  <!-- Social Links -->
+  <div class="widget widget-social">
+    <ul style="list-style: none; padding: 0; margin: 20px 0; display: flex; gap: 15px;">
+      <li><a href="https://www.linkedin.com/in/niels-kok-79823360/" title="LinkedIn">LinkedIn</a></li>
+      <li><a href="https://twitter.com/NielsKok5" title="Twitter">Twitter</a></li>
+      <li><a href="https://github.com/Ruthhl3ss" title="GitHub">GitHub</a></li>
+    </ul>
+  </div>
+
+  <!-- TechSolit Logo -->
+  <div class="widget widget-image">
+    <img src="https://www.nielskok.tech/wp-content/uploads/2025/12/TechSolit_Logo.webp" alt="TechSolit Logo" style="max-width: 100%; height: auto; margin: 20px 0;">
+  </div>
+
+  <!-- Recent Posts -->
+  <div class="widget widget-recent-posts">
+    <h3>Recent Posts</h3>
+    <ul style="list-style: none; padding: 0;">
+      {% for post in site.posts limit:5 %}
+        <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <!-- Archive by Date -->
+  <div class="widget widget-archive">
+    <h3>Archive</h3>
+    <ul style="list-style: none; padding: 0;">
+      {% capture my_year %}{{ 'now' | date: '%Y' }}{% endcapture %}
+      {% for post in site.posts %}
+        {% capture post_year %}{{ post.date | date: '%Y' }}{% endcapture %}
+        {% if post_year != my_year %}
+          {% assign my_year = post_year %}
+          <li><a href="#{{ post_year }}">{{ post_year }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</aside>

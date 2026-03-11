@@ -44,3 +44,69 @@ pre code {
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
+
+// Sidebar styles
+.wrapper-with-sidebar {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+  }
+}
+
+.wrapper-main {
+  flex: 2;
+  min-width: 0;
+}
+
+.sidebar {
+  flex: 1;
+  background: #f5f5f5;
+  padding: 20px;
+  border-radius: 5px;
+  min-width: 250px;
+
+  @media screen and (max-width: 600px) {
+    min-width: auto;
+    width: 100%;
+  }
+}
+
+.sidebar .widget {
+  margin-bottom: 30px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.sidebar h3 {
+  margin: 0 0 15px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.sidebar a {
+  color: #1e73be;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.sidebar ul {
+  margin: 0;
+  padding: 0;
+
+  li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

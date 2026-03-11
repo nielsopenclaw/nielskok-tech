@@ -2,21 +2,29 @@
 layout: default
 ---
 
-<div class="home">
-  <h1 class="page-heading">Posts</h1>
+<div style="display: flex; gap: 30px;">
+  <main style="flex: 2;">
+    <div class="home">
+      <h1 class="page-heading">Posts</h1>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        {% if post.featured_image %}
-          <img src="{{ post.featured_image }}" alt="{{ post.title }}" style="max-width: 100%; height: auto; margin-bottom: 10px;">
-        {% endif %}
-        <h3>
-          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-        </h3>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-        <p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
-      </li>
-    {% endfor %}
-  </ul>
+      <ul class="post-list" style="list-style: none; padding: 0;">
+        {% for post in site.posts %}
+          <li style="margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid #eee;">
+            {% if post.featured_image %}
+              <img src="{{ post.featured_image }}" alt="{{ post.title }}" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+            {% endif %}
+            <h3>
+              <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+            </h3>
+            <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+            <p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </main>
+
+  <aside style="flex: 1;">
+    {% include sidebar.html %}
+  </aside>
 </div>

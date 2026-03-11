@@ -3,56 +3,285 @@
 
 @import "minima";
 
-// Custom overrides for NielsKok.Tech
+// Color scheme
+$dark-header: #222222;
+$light-bg: #f5f5f5;
+$accent-blue: #1e73be;
+$text-dark: #333333;
+$text-light: #666666;
+$border-light: #eeeeee;
+
+// Typography
+$base-font-size: 16px;
+$h1-size: 40px;
+$h2-size: 30px;
+$h3-size: 20px;
+
+// Global styles
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-size: $base-font-size;
+  color: $text-dark;
+  background-color: #ffffff;
+  line-height: 1.6;
 }
 
+// Header
 .site-header {
-  border-top: 4px solid #0078d4; // Microsoft blue
+  background-color: $dark-header;
+  border-top: none;
+  border-bottom: 1px solid darken($dark-header, 10%);
+  padding: 1.5rem 0;
+}
+
+.site-header a {
+  color: white;
+  text-decoration: none;
+
+  &:hover {
+    color: $accent-blue;
+  }
+}
+
+.site-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: -0.5px;
+
+  &:hover {
+    color: $accent-blue;
+  }
+}
+
+.site-nav {
+  float: right;
+
+  .nav-trigger {
+    display: none;
+  }
+
+  .menu-icon {
+    display: none;
+  }
+
+  .page-link {
+    color: white;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+
+    &:hover {
+      color: $accent-blue;
+      text-decoration: underline;
+    }
+  }
+}
+
+// Page content
+.page-content {
+  padding: 2rem 0;
+  background-color: #ffffff;
+  min-height: calc(100vh - 200px);
+}
+
+.wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+// Typography
+h1 {
+  font-size: $h1-size;
+  font-weight: 700;
+  color: $text-dark;
+  margin: 1.5rem 0 0.75rem 0;
+  line-height: 1.3;
+  letter-spacing: -0.5px;
+}
+
+h2 {
+  font-size: $h2-size;
+  font-weight: 700;
+  color: $text-dark;
+  margin: 1.5rem 0 0.5rem 0;
+  line-height: 1.3;
+  letter-spacing: -0.3px;
+}
+
+h3 {
+  font-size: $h3-size;
+  font-weight: 700;
+  color: $text-dark;
+  margin: 1.25rem 0 0.5rem 0;
+  line-height: 1.3;
+}
+
+h4, h5, h6 {
+  font-weight: 600;
+  color: $text-dark;
+  margin: 1rem 0 0.5rem 0;
+}
+
+p {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+// Links
+a {
+  color: $accent-blue;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    color: darken($accent-blue, 10%);
+  }
+
+  &:visited {
+    color: darken($accent-blue, 20%);
+  }
+}
+
+// Post list
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+
+  li {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid $border-light;
+
+    &:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+  }
 }
 
 .post-list h3 {
-  font-size: 1.3em;
+  font-size: $h3-size;
+  margin: 0.75rem 0 0.5rem 0;
+
+  a {
+    color: $text-dark;
+
+    &:hover {
+      color: $accent-blue;
+    }
+  }
 }
 
+// Post metadata
 .post-meta {
-  color: #666;
-  font-size: 0.9em;
+  display: block;
+  color: $text-light;
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+
+  .post-date {
+    margin-right: 1rem;
+  }
+
+  .post-author {
+    margin-right: 1rem;
+  }
 }
 
+// Featured image
+.post-list img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  display: block;
+}
+
+// Categories and tags
+.post-categories,
+.post-tags {
+  display: inline-block;
+  margin-top: 0.75rem;
+}
+
+.category-badge,
+.tag-badge {
+  display: inline-block;
+  background-color: $accent-blue;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 3px;
+  font-size: 0.85rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+
+  a {
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+
+// Post excerpt
+.post-excerpt {
+  color: $text-dark;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 1rem 0 0 0;
+}
+
+// Code
 code {
-  background-color: #f5f5f5;
+  background-color: $light-bg;
   padding: 2px 5px;
   border-radius: 3px;
   font-size: 0.9em;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  color: #d73a49;
 }
 
-pre code {
-  background-color: transparent;
-  padding: 0;
+pre {
+  background-color: $light-bg;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin: 1rem 0;
+  border: 1px solid darken($light-bg, 5%);
+
+  code {
+    background-color: transparent;
+    padding: 0;
+    color: $text-dark;
+  }
 }
 
-.category-badge {
-  display: inline-block;
-  background: #0078d4;
-  color: white;
-  padding: 2px 8px;
-  border-radius: 12px;
-  font-size: 0.75em;
-  margin-right: 5px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+blockquote {
+  border-left: 4px solid $accent-blue;
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: $text-light;
+  font-style: italic;
 }
 
-// Sidebar styles
+// Layout with sidebar
 .wrapper-with-sidebar {
   display: flex;
-  gap: 30px;
+  gap: 2rem;
   align-items: flex-start;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     flex-direction: column;
+    gap: 2rem;
   }
 }
 
@@ -63,19 +292,19 @@ pre code {
 
 .sidebar {
   flex: 1;
-  background: #f5f5f5;
-  padding: 20px;
-  border-radius: 5px;
+  background-color: $light-bg;
+  padding: 1.5rem;
+  border-radius: 4px;
   min-width: 250px;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     min-width: auto;
     width: 100%;
   }
 }
 
 .sidebar .widget {
-  margin-bottom: 30px;
+  margin-bottom: 2rem;
 
   &:last-child {
     margin-bottom: 0;
@@ -83,13 +312,16 @@ pre code {
 }
 
 .sidebar h3 {
-  margin: 0 0 15px 0;
-  font-size: 18px;
-  color: #333;
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  color: $text-dark;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .sidebar a {
-  color: #1e73be;
+  color: $accent-blue;
   text-decoration: none;
 
   &:hover {
@@ -100,13 +332,154 @@ pre code {
 .sidebar ul {
   margin: 0;
   padding: 0;
+  list-style: none;
 
   li {
-    margin-bottom: 8px;
+    margin-bottom: 0.75rem;
     line-height: 1.6;
+    padding-left: 0;
 
     &:last-child {
       margin-bottom: 0;
     }
+
+    a {
+      color: $accent-blue;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// Footer
+.site-footer {
+  background-color: $dark-header;
+  color: white;
+  padding: 2rem 0;
+  margin-top: 3rem;
+  border-top: 1px solid darken($dark-header, 10%);
+}
+
+.site-footer a {
+  color: $accent-blue;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.footer-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.footer-col {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+
+  a {
+    color: $accent-blue;
+  }
+}
+
+// Page heading
+.page-heading {
+  font-size: $h2-size;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid $light-bg;
+}
+
+// Post/article styling
+article {
+  line-height: 1.8;
+  color: $text-dark;
+}
+
+// Responsive images
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// Tables
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+th, td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid $border-light;
+}
+
+th {
+  background-color: $light-bg;
+  font-weight: 700;
+  color: $text-dark;
+}
+
+tr:hover {
+  background-color: rgba($light-bg, 0.5);
+}
+
+// Lists
+ul, ol {
+  margin: 1rem 0;
+  padding-left: 2rem;
+  line-height: 1.8;
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+}
+
+// Mobile responsive
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 32px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  body {
+    font-size: 15px;
+  }
+
+  .wrapper {
+    padding: 0 0.75rem;
+  }
+
+  .site-header {
+    padding: 1rem 0;
+  }
+
+  .site-nav {
+    float: none;
+    display: block;
   }
 }

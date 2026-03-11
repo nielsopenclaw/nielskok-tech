@@ -1,0 +1,16 @@
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-col">
+      <strong>{{ site.title | escape }}</strong>
+      <p>{{ site.description | escape }}</p>
+    </div>
+    <div class="footer-col">
+      <p>&copy; {{ site.time | date: "%Y" }} {{ site.author | escape }}. All rights reserved.</p>
+      <p>
+        {%- if site.github_username -%}
+          <a href="https://github.com/{{ site.github_username | cgi_escape | escape }}">GitHub</a>
+        {%- endif -%}
+      </p>
+    </div>
+  </div>
+</footer>

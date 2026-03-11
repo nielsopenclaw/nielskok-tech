@@ -3,16 +3,44 @@ layout: default
 ---
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
+  {% if page.featured_image %}
+    <img src="{{ page.featured_image }}" alt="{{ page.title }}" class="post-featured-image" itemprop="image">
+  {% endif %}
+
   <header class="post-header">
     <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
-    <p class="post-meta">
+    
+    <div class="post-meta">
       <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        {{ page.date | date: date_format }}
+        {%- assign date_format = site.minima.date_format | default: "%B %-d, %Y" -%}
+        <strong>{{ page.date | date: date_format }}</strong>
       </time>
       {%- if page.author -%}
-        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>
-      {%- endif -%}</p>
+        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+          by <span class="p-author h-card" itemprop="name">{{ page.author }}</span>
+        </span>
+      {%- endif -%}
+    </div>
+
+    {% if page.categories.size > 0 %}
+      <div class="post-categories">
+        {% for category in page.categories %}
+          <span class="category-badge">
+            <a href="{{ site.baseurl }}/categories/#{{ category | slugify }}">{{ category }}</a>
+          </span>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if page.tags.size > 0 %}
+      <div class="post-tags">
+        {% for tag in page.tags %}
+          <span class="tag-badge">
+            <a href="{{ site.baseurl }}/tags/#{{ tag | slugify }}">{{ tag }}</a>
+          </span>
+        {% endfor %}
+      </div>
+    {% endif %}
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">

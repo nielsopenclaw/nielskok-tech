@@ -2,24 +2,16 @@
 layout: default
 ---
 
-{% assign posts = paginator.posts | default: site.posts %}
-
-<div class="wrapper-with-sidebar">
-  <main class="wrapper-main">
+<div style="display: flex; gap: 30px;">
+  <main style="flex: 2;">
     <div class="home">
-      {{ content }}
-
       <h1 class="page-heading">Posts</h1>
 
-      <ul class="post-list post-list--paged">
-        {% for post in posts %}
-          <li class="post-list__item">
+      <ul class="post-list" style="list-style: none; padding: 0;">
+        {% for post in site.posts %}
+          <li style="margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid #eee;">
             {% if post.featured_image %}
-              <img
-                class="post-list__image"
-                src="{{ post.featured_image }}"
-                alt="{{ post.title }}"
-              >
+              <img src="{{ post.featured_image }}" alt="{{ post.title }}" style="max-width: 100%; height: auto; margin-bottom: 10px;">
             {% endif %}
             <h3>
               <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
@@ -29,40 +21,10 @@ layout: default
           </li>
         {% endfor %}
       </ul>
-
-      {% if paginator.total_pages > 1 %}
-        <nav class="pagination" aria-label="Post pages">
-          {% if paginator.previous_page %}
-            <a
-              class="pagination__link pagination__link--prev"
-              href="{% if paginator.previous_page == 1 %}{{ '/' | relative_url }}{% else %}{{ paginator.previous_page_path | relative_url }}{% endif %}"
-            >
-              Newer posts
-            </a>
-          {% else %}
-            <span class="pagination__link pagination__link--disabled">Newer posts</span>
-          {% endif %}
-
-          <span class="pagination__summary">
-            Page {{ paginator.page }} of {{ paginator.total_pages }}
-          </span>
-
-          {% if paginator.next_page %}
-            <a
-              class="pagination__link pagination__link--next"
-              href="{{ paginator.next_page_path | relative_url }}"
-            >
-              Older posts
-            </a>
-          {% else %}
-            <span class="pagination__link pagination__link--disabled">Older posts</span>
-          {% endif %}
-        </nav>
-      {% endif %}
     </div>
   </main>
 
-  <aside class="sidebar">
+  <aside style="flex: 1;">
     {% include sidebar.html %}
   </aside>
 </div>

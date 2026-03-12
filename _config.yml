@@ -12,7 +12,6 @@ minima:
   skin: auto
 
 plugins:
-  - jekyll-paginate
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag

@@ -8,7 +8,7 @@ layout: default
       <h1 class="page-heading">Posts</h1>
 
       <ul class="post-list">
-        {% for post in site.posts %}
+        {% for post in paginator.posts %}
           <li>
             {% if post.featured_image %}
               <img src="{{ post.featured_image }}" alt="{{ post.title }}" />
@@ -34,6 +34,31 @@ layout: default
           </li>
         {% endfor %}
       </ul>
+
+      <!-- Pagination Links -->
+      {% if paginator.total_pages > 1 %}
+        <div class="pagination">
+          {% if paginator.previous_page %}
+            {% if paginator.previous_page == 1 %}
+              <a href="{{ '/' | relative_url }}" class="pagination-link pagination-prev">&larr; Previous</a>
+            {% else %}
+              <a href="{{ '/page' | relative_url }}{{ paginator.previous_page }}/" class="pagination-link pagination-prev">&larr; Previous</a>
+            {% endif %}
+          {% else %}
+            <span class="pagination-link pagination-disabled">&larr; Previous</span>
+          {% endif %}
+
+          <div class="pagination-info">
+            Page {{ paginator.page }} of {{ paginator.total_pages }}
+          </div>
+
+          {% if paginator.next_page %}
+            <a href="{{ '/page' | relative_url }}{{ paginator.next_page }}/" class="pagination-link pagination-next">Next &rarr;</a>
+          {% else %}
+            <span class="pagination-link pagination-disabled">Next &rarr;</span>
+          {% endif %}
+        </div>
+      {% endif %}
     </div>
   </main>
 

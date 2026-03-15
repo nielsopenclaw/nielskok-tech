@@ -40,9 +40,9 @@ layout: default
         <div class="pagination">
           {% if paginator.previous_page %}
             {% if paginator.previous_page == 1 %}
-              <a href="{{ '/' | relative_url }}" class="pagination-link pagination-prev">&larr; Previous</a>
+              <a href="{{ site.baseurl }}/" class="pagination-link pagination-prev">&larr; Previous</a>
             {% else %}
-              <a href="{{ '/page' | relative_url }}{{ paginator.previous_page }}/" class="pagination-link pagination-prev">&larr; Previous</a>
+              <a href="{{ site.baseurl }}/page{{ paginator.previous_page }}/" class="pagination-link pagination-prev">&larr; Previous</a>
             {% endif %}
           {% else %}
             <span class="pagination-link pagination-disabled">&larr; Previous</span>
@@ -53,7 +53,7 @@ layout: default
           </div>
 
           {% if paginator.next_page %}
-            <a href="{{ '/page' | relative_url }}{{ paginator.next_page }}/" class="pagination-link pagination-next">Next &rarr;</a>
+            <a href="{{ site.baseurl }}/page{{ paginator.next_page }}/" class="pagination-link pagination-next">Next &rarr;</a>
           {% else %}
             <span class="pagination-link pagination-disabled">Next &rarr;</span>
           {% endif %}

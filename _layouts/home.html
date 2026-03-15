@@ -7,17 +7,30 @@ layout: default
     <div class="home">
       <h1 class="page-heading">Posts</h1>
 
-      <ul class="post-list" style="list-style: none; padding: 0;">
+      <ul class="post-list">
         {% for post in site.posts %}
-          <li style="margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid #eee;">
+          <li>
             {% if post.featured_image %}
-              <img src="{{ post.featured_image }}" alt="{{ post.title }}" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+              <img src="{{ post.featured_image }}" alt="{{ post.title }}" />
             {% endif %}
+            
+            {% if post.categories %}
+              <div class="post-categories">
+                {% for category in post.categories %}
+                  <a href="{{ '/categories/#' | relative_url }}{{ category | slugify }}" class="post-category">{{ category }}</a>
+                {% endfor %}
+              </div>
+            {% endif %}
+
             <h3>
               <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
             </h3>
+            
             <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-            <p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+            
+            <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+            
+            <a href="{{ post.url | relative_url }}" class="post-read-more">Read More</a>
           </li>
         {% endfor %}
       </ul>

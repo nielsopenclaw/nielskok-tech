@@ -28,13 +28,7 @@ layout: default
             
             <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
             
-            <p class="post-excerpt">
-              {%- if post.excerpt -%}
-                {{ post.excerpt | strip_html | truncatewords: 30 }}
-              {%- else -%}
-                {{ post.content | strip_html | truncatewords: 30 }}
-              {%- endif -%}
-            </p>
+            <p class="post-excerpt">{{ post.content | strip_html | truncatewords: 30 }}</p>
             
             <a href="{{ post.url | relative_url }}" class="post-read-more">Read More</a>
           </li>
